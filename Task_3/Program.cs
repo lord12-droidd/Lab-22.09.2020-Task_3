@@ -1,38 +1,68 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.Tracing;
+using System.Threading;
 
-namespace Task_3
+namespace _3
 {
-    class Task_3
+    class Program
     {
         static void Main(string[] args)
         {
-            bool flag = true;
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Console.InputEncoding = System.Text.Encoding.Unicode;
+
+            int a = 0;
+            double b = 0;
+            long c = 0;
+
+            bool flag = false;
+            while (flag == false)
+            {
+                flag = true;
+                try
+                {
+                    Console.Write("Введіть змінну типу int: ");
+                    a = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Неправильний тип змінної");
+                    flag = false;
+                }
+            }
+
             while (flag == true)
             {
                 try
                 {
-                    Console.OutputEncoding = System.Text.Encoding.Unicode;
                     flag = false;
-                    Console.WriteLine("Введіть змінну типу int ");
-                    int a = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Введіть змінну типу double");
-                    double b = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Введіть змінну типу long");
-                    long c = Convert.ToInt64(Console.ReadLine());
-                    Console.WriteLine($"a = {a}; b = {b}; c = {c}");
-                    Console.ReadKey();
+                    Console.Write("Введіть змінну типу double: ");
+                    b = Convert.ToDouble(Console.ReadLine());
                 }
                 catch
                 {
+                    Console.WriteLine("Неправильний тип змінної");
                     flag = true;
-                    Console.WriteLine("Enter correct value");
                 }
             }
 
+            while (flag == false)
+            {
+                try
+                {
+                    flag = true;
+                    Console.Write("Введіть змінну типу long: ");
+                    c = Convert.ToInt64(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Неправильний тип змінної");
+                    flag = false;
+                }
+            }
+            Console.WriteLine($"a = {a}; b = {b}; c = {c}");
+            Console.ReadKey();
         }
     }
 }
+
